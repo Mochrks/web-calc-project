@@ -1,16 +1,16 @@
 
 import { Navbar } from '@/components/demo/Navbar'
 import { Footer } from '@/components/demo/Footer'
-import { HomePage } from '@/components/demo/HomePage'
+import { IncomeCalc } from '@/components/demo/IncomeCalc'
 
-export const Home = () => {
+export const Income = () => {
     return (
         <>
             <header className=''>
                 <Navbar />
             </header>
             <main className='w-full'>
-                <HomePage />
+                <IncomeCalc />
             </main>
             <Footer />
         </>

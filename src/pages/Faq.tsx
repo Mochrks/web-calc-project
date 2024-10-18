@@ -1,16 +1,17 @@
 
 import { Navbar } from '@/components/demo/Navbar'
 import { Footer } from '@/components/demo/Footer'
-import { HomePage } from '@/components/demo/HomePage'
+import { FAQPage } from '@/components/demo/FAQPage'
 
-export const Home = () => {
+
+export const Faq = () => {
     return (
         <>
             <header className=''>
                 <Navbar />
             </header>
             <main className='w-full'>
-                <HomePage />
+                <FAQPage />
             </main>
             <Footer />
         </>

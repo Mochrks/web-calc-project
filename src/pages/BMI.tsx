@@ -1,16 +1,17 @@
 
 import { Navbar } from '@/components/demo/Navbar'
 import { Footer } from '@/components/demo/Footer'
-import { HomePage } from '@/components/demo/HomePage'
+import { BMICalc } from '@/components/demo/BmiCalc'
 
-export const Home = () => {
+
+export const BMI = () => {
     return (
         <>
             <header className=''>
                 <Navbar />
             </header>
             <main className='w-full'>
-                <HomePage />
+                <BMICalc />
             </main>
             <Footer />
         </>

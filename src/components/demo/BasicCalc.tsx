@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-
+import { useState } from 'react'
 import { Button } from '../ui/button'
-import { DivideIcon, MinusIcon, PlusIcon, XIcon } from 'lucide-react'
+import { DivideIcon, MinusIcon, PlusIcon, XIcon, DeleteIcon } from 'lucide-react'
 import { Card } from '../ui/card'
 import { LuCalculator } from "react-icons/lu";
-export const BasicCalc = () => {
 
+export const BasicCalc = () => {
     const [display, setDisplay] = useState('0')
     const [currentValue, setCurrentValue] = useState('')
     const [operator, setOperator] = useState('')
     const [waitingForOperand, setWaitingForOperand] = useState(false)
+    const [calculation, setCalculation] = useState('')
 
     const inputDigit = (digit: string) => {
         if (waitingForOperand) {
@@ -18,6 +18,7 @@ export const BasicCalc = () => {
         } else {
             setDisplay(display === '0' ? digit : display + digit)
         }
+        updateCalculation(digit)
     }
 
     const inputDecimal = () => {
@@ -27,6 +28,7 @@ export const BasicCalc = () => {
         } else if (display.indexOf('.') === -1) {
             setDisplay(display + '.')
         }
+        updateCalculation('.')
     }
 
     const clearDisplay = () => {
@@ -34,6 +36,7 @@ export const BasicCalc = () => {
         setCurrentValue('')
         setOperator('')
         setWaitingForOperand(false)
+        setCalculation('')
     }
 
     const performOperation = (nextOperator: string) => {
@@ -64,17 +67,42 @@ export const BasicCalc = () => {
 
             setCurrentValue(newValue.toString())
             setDisplay(newValue.toString())
+
+            if (nextOperator === '=') {
+                setCalculation(`${calculation} = ${newValue}`)
+            }
         }
 
         setWaitingForOperand(true)
         setOperator(nextOperator)
+        if (nextOperator !== '=') {
+            updateCalculation(` ${nextOperator} `)
+        }
     }
 
-    const buttonClass = "text-2xl font-semibold  w-20 h-20 flex items-center justify-center"
+    const updateCalculation = (value: string) => {
+        setCalculation(prev => {
+            if (prev.includes('=')) {
+                return value
+            }
+            return prev + value
+        })
+    }
+
+    const deleteLastDigit = () => {
+        if (display.length > 1) {
+            setDisplay(display.slice(0, -1))
+            setCalculation(calculation.slice(0, -1))
+        } else {
+            setDisplay('0')
+            setCalculation('')
+        }
+    }
+
+    const buttonClass = "text-2xl font-semibold w-20 h-20 flex items-center justify-center"
 
     return (
-
-        <div className="container relative h-screen flex-col items-center justify-center md:grid md:max-w-none md:grid-cols-2 lg:px-0">
+        <div className="container relative min-h-screen flex-col items-center justify-center md:grid md:max-w-none md:grid-cols-2 lg:px-0">
             <div className="hidden h-full bg-muted text-zinc-800 md:flex flex-col justify-around space-y-10 text-lg font-medium bg-secondary">
                 <div className='px-10 space-y-5'>
                     <div className='flex space-x-2'>
@@ -87,15 +115,16 @@ export const BasicCalc = () => {
                 </div>
                 <blockquote className="px-10">
                     <p className="text-lg">
-                        &ldquo;This platform has revolutionized how we handle our daily operations. It's intuitive, powerful, and a joy to use.&rdquo;
+                        &ldquo;This calculator is simple, reliable, and essential for quick calculations on the go. It's designed to handle everyday tasks effortlessly.&rdquo;
                     </p>
                 </blockquote>
             </div>
 
-            <div className="lg:p-8">
+            <div className="pt-20 md:pt-1 lg:p-8 ">
                 <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[320px]">
                     <Card className="bg-white text-white p-4 rounded-3xl">
-                        <div className="h-32 flex items-end justify-end pb-4 px-6">
+                        <div className="h-32 flex flex-col items-end justify-end pb-4 px-6">
+                            <span className="text-2xl font-light text-gray-500">{calculation}</span>
                             <span className="text-6xl font-light text-black">{display}</span>
                         </div>
                         <div className="grid grid-cols-4 gap-3">
@@ -213,7 +242,7 @@ export const BasicCalc = () => {
                             </Button>
                             <Button
                                 variant="default"
-                                className={`${buttonClass} bg-gray-700 text-white hover:bg-gray-600 col-span-2`}
+                                className={`${buttonClass} bg-gray-700 text-white hover:bg-gray-600`}
                                 onClick={() => inputDigit('0')}
                             >
                                 0
@@ -227,6 +256,13 @@ export const BasicCalc = () => {
                             </Button>
                             <Button
                                 variant="default"
+                                className={`${buttonClass} bg-gray-700 text-white hover:bg-gray-600`}
+                                onClick={deleteLastDigit}
+                            >
+                                <DeleteIcon size={28} />
+                            </Button>
+                            <Button
+                                variant="default"
                                 className={`${buttonClass} bg-orange-500 text-white hover:bg-orange-400`}
                                 onClick={() => performOperation('=')}
                             >
@@ -235,10 +271,7 @@ export const BasicCalc = () => {
                         </div>
                     </Card>
                 </div>
-
             </div>
-        </div >
-
+        </div>
     )
-
 }
