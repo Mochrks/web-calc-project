@@ -136,7 +136,11 @@ export const IncomeCalc = () => {
                                                 dataKey="value"
                                             >
                                                 {chartData.map((entry, index) => (
-                                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}>
+                                                        <text x="50%" y="50%" textAnchor="middle" fill="white">
+                                                            {entry.name}
+                                                        </text>
+                                                    </Cell>
                                                 ))}
                                             </Pie>
                                             <Tooltip formatter={(value) => formatIDR(Number(value))} />
