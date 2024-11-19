@@ -6,7 +6,6 @@ import { Income } from '@/pages/Income';
 import { BMI } from '@/pages/BMI';
 import { Faq } from '@/pages/Faq';
 
-
 const AppRoutes: React.FC = () => {
     return (
         <Routes>

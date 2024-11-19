@@ -7,7 +7,7 @@ import { FAQPage } from '@/components/demo/FAQPage'
 export const Faq = () => {
     return (
         <>
-            <header className=''>
+            <header >
                 <Navbar />
             </header>
             <main className='w-full'>

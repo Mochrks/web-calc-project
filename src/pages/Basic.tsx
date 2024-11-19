@@ -6,7 +6,7 @@ import { BasicCalc } from '@/components/demo/BasicCalc'
 export const Basic = () => {
     return (
         <>
-            <header className=''>
+            <header >
                 <Navbar />
             </header>
             <main className='w-full'>

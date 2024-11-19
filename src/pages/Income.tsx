@@ -6,7 +6,7 @@ import { IncomeCalc } from '@/components/demo/IncomeCalc'
 export const Income = () => {
     return (
         <>
-            <header className=''>
+            <header >
                 <Navbar />
             </header>
             <main className='w-full'>

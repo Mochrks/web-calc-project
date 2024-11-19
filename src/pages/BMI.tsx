@@ -7,7 +7,7 @@ import { BMICalc } from '@/components/demo/BmiCalc'
 export const BMI = () => {
     return (
         <>
-            <header className=''>
+            <header >
                 <Navbar />
             </header>
             <main className='w-full'>

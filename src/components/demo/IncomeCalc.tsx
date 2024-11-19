@@ -164,7 +164,7 @@ export const IncomeCalc = () => {
                             </Card>
                         )}
 
-                        <Card className="bg-white text-black p-4 rounded-3xl ml-10">
+                        <Card className="bg-white text-black p-4 rounded-3xl ">
                             <CardHeader>
                                 <CardTitle className="text-2xl font-bold">Saved Entries</CardTitle>
                             </CardHeader>
@@ -258,6 +258,81 @@ export const IncomeCalc = () => {
                         </CardContent>
                     </Card>
 
+
+                    <div className='flex flex-col md:hidden'>
+                        <div className='py-2'>
+                            <Card className="bg-white text-black p-4 rounded-3xl">
+                                <CardHeader>
+                                    <CardTitle className="text-2xl font-bold">Income Breakdown</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <div className="h-[300px] w-full">
+                                        <ResponsiveContainer width="100%" height="100%">
+                                            <PieChart>
+                                                <Pie
+                                                    data={chartData}
+                                                    cx="50%"
+                                                    cy="50%"
+                                                    labelLine={false}
+                                                    outerRadius={80}
+                                                    fill="#8884d8"
+                                                    dataKey="value"
+                                                >
+                                                    {chartData.map((entry, index) => (
+                                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}>
+                                                            <text x="50%" y="50%" textAnchor="middle" fill="white">
+                                                                {entry.name}
+                                                            </text>
+                                                        </Cell>
+                                                    ))}
+                                                </Pie>
+                                                <Tooltip formatter={(value) => formatIDR(Number(value))} />
+                                                <Legend />
+                                            </PieChart>
+                                        </ResponsiveContainer>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </div>
+                        <div className='flex flex-col gap-6 py-10'>
+
+
+                            <Card className="bg-white text-black p-4 rounded-3xl  w-full">
+                                <CardHeader>
+                                    <CardTitle className="text-2xl font-bold">Saved Entries</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <div className="space-y-4">
+                                        {entries.map((entry, index) => (
+                                            <div key={index} className="border-b pb-2">
+                                                <p><strong>Date:</strong> {entry.date}</p>
+                                                <p><strong>Income:</strong> {formatIDR(entry.income)}</p>
+                                                <p><strong>Expenses:</strong></p>
+                                                <ul>
+                                                    {entry.expenses.filter(expense => expense.amount > 0).map((expense, i) => (
+                                                        <li key={i}>{expense.name || `Expense ${i + 1}`}: {formatIDR(expense.amount)}</li>
+                                                    ))}
+                                                </ul>
+                                                <p><strong>Savings:</strong> {formatIDR(entry.savings)}</p>
+                                                <p><strong>Notes:</strong> {entry.notes}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </CardContent>
+                            </Card>
+
+                            {recommendation && (
+                                <Card className="bg-white text-black p-4 rounded-3xl">
+                                    <CardHeader>
+                                        <CardTitle className="text-2xl font-bold">Recommendation</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p>{recommendation}</p>
+                                    </CardContent>
+                                </Card>
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

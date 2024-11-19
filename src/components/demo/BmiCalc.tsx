@@ -159,8 +159,73 @@ export const BMICalc = () => {
                             </div>
                         </CardContent>
                     </Card>
+
+                    <div className='flex flex-col md:hidden py-20'>
+                        <h1 className="scroll-m-20 text-xl font-extrabold tracking-tight py-5 ">
+                            Table BMI
+                        </h1>
+
+                        <div className='flex flex-col gap-5'>
+                            <Card className="bg-white text-black p-5 rounded-3xl">
+                                <CardHeader>
+                                    <CardTitle className="text-2xl font-bold">BMI Categories</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <Table>
+                                        <TableHeader>
+                                            <TableRow>
+                                                <TableHead>Category</TableHead>
+                                                <TableHead>BMI Range</TableHead>
+                                            </TableRow>
+                                        </TableHeader>
+                                        <TableBody>
+                                            {bmiCategories.map((item, index) => (
+                                                <TableRow key={index}>
+                                                    <TableCell>{item.category}</TableCell>
+                                                    <TableCell>{item.range}</TableCell>
+                                                </TableRow>
+                                            ))}
+                                        </TableBody>
+                                    </Table>
+                                </CardContent>
+                            </Card>
+                            <h1 className="scroll-m-20 text-xl font-extrabold tracking-tight py-5 ">
+                                Chart
+                            </h1>
+                            <Card className="bg-white text-black p-4 rounded-3xl">
+                                <CardHeader>
+                                    <CardTitle className="text-2xl font-bold">BMI Chart</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <div className="h-[300px] w-full">
+                                        <ResponsiveContainer width="100%" height="100%">
+                                            <LineChart data={chartData}>
+                                                <CartesianGrid strokeDasharray="3 3" />
+                                                <XAxis dataKey="bmi" />
+                                                <YAxis />
+                                                <Tooltip />
+                                                <Line type="monotone" dataKey="bmi" stroke="#8884d8" />
+                                                {bmi && (
+                                                    <Line
+                                                        type="monotone"
+                                                        data={[{ bmi: bmi, label: 'Your BMI' }]}
+                                                        dataKey="bmi"
+                                                        stroke="#82ca9d"
+                                                        strokeWidth={3}
+                                                        dot={{ r: 8 }}
+                                                    />
+                                                )}
+                                            </LineChart>
+                                        </ResponsiveContainer>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
         </div>
     )
 }
