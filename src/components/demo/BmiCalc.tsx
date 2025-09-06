@@ -6,6 +6,7 @@ import { Label } from '../ui/label'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table'
 import { LuCalculator } from "react-icons/lu"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
+import { bmiCategories, chartData } from '@/apis'
 
 export const BMICalc = () => {
     const [height, setHeight] = useState<number | ''>('')
@@ -30,21 +31,6 @@ export const BMICalc = () => {
         }
     }, [bmi])
 
-    const bmiCategories = [
-        { category: 'Underweight', range: 'Less than 18.5' },
-        { category: 'Normal weight', range: '18.5 - 24.9' },
-        { category: 'Overweight', range: '25 - 29.9' },
-        { category: 'Obese', range: '30 or greater' },
-    ]
-
-    const chartData = [
-        { bmi: 15, label: 'Severely Underweight' },
-        { bmi: 18.5, label: 'Underweight' },
-        { bmi: 25, label: 'Normal' },
-        { bmi: 30, label: 'Overweight' },
-        { bmi: 35, label: 'Obese' },
-        { bmi: 40, label: 'Severely Obese' },
-    ]
 
     return (
         <div className="container relative min-h-screen flex-col items-center justify-center md:grid md:max-w-none md:grid-cols-2 lg:px-0">

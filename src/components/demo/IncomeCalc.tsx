@@ -7,19 +7,7 @@ import { Textarea } from '../ui/textarea'
 import { LuCalculator } from "react-icons/lu"
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts'
 import { format } from 'date-fns'
-
-type Expense = {
-    name: string;
-    amount: number;
-}
-
-type IncomeEntry = {
-    date: string;
-    income: number;
-    expenses: Expense[];
-    savings: number;
-    notes: string;
-}
+import { Expense, IncomeEntry } from '@/types'
 
 const formatIDR = (value: number) => {
     return new Intl.NumberFormat('id-ID', {
