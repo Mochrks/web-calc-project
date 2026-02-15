@@ -1,123 +1,139 @@
-
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { LuCalculator, LuDollarSign, LuHelpCircle } from "react-icons/lu"
+import { Card } from "@/components/ui/card"
+import { LuCalculator, LuDollarSign, LuActivity, LuTrendingUp, LuTarget, LuBrain, LuBanknote, LuArrowLeftRight } from "react-icons/lu"
 import { Link } from 'react-router-dom'
 
 export const HomePage = () => {
     return (
-        <div className="min-h-screen py-20 bg-gradient-to-b from-gray-100 to-gray-200">
-            <main className="container mx-auto px-4 py-12">
-                <section className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-gray-800 mb-4">Take Control of Your Health , Finances , and Calculate Math</h2>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Use our powerful calculators to make informed decisions about your well-being and financial future.
+        <div className="min-h-screen py-10 bg-bg text-text">
+            <main className="container mx-auto px-4">
+                <section className="text-center mb-20 relative">
+                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-yellow-300 border-2 border-black px-4 py-1 font-black uppercase text-xs rotate-2 shadow-light">
+                        V3.0 Extreme Dashboards
+                    </div>
+                    <h1 className="text-6xl md:text-9xl font-black mb-6 uppercase italic tracking-tighter leading-tight">
+                        Ultra<span className="text-mainAccent">Calc</span>
+                    </h1>
+                    <p className="text-xl md:text-2xl font-bold max-w-3xl mx-auto border-4 border-black bg-white p-8 shadow-light -rotate-1">
+                        Professional-grade analytical engine for health, finance, and scientific engineering. Now with data persistence.
                     </p>
                 </section>
 
-                <div className="grid md:grid-cols-3 gap-8">
-                    <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <CardHeader>
-                            <CardTitle className="flex items-center text-2xl font-bold text-gray-800">
-                                <LuCalculator className="w-6 h-6 mr-2 text-blue-500" />
-                                BMI Calculator
-                            </CardTitle>
-                            <CardDescription>Understand your body mass index</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <p className="text-gray-600 mb-4">
-                                Calculate your BMI and get insights into your health status. Our easy-to-use tool provides instant results and personalized recommendations.
-                            </p>
-                            <Button asChild className="w-full bg-blue-500 hover:bg-blue-600 text-white">
-                                <Link to="/bmi-calc">Calculate BMI</Link>
-                            </Button>
-                        </CardContent>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+                    <Card className="bg-blue-300 border-4 border-black shadow-light p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="bg-white border-2 border-black p-2 rounded-base">
+                                <LuActivity className="w-8 h-8 text-blue-600" />
+                            </div>
+                            <h2 className="text-3xl font-black uppercase italic">Health Hub</h2>
+                        </div>
+                        <p className="font-bold mb-6 min-h-[60px]">
+                            BMR, TDEE, BMI, and Weight logging with historical trend charts.
+                        </p>
+                        <Button asChild className="w-full bg-white text-black border-2 border-black shadow-light hover:bg-blue-50">
+                            <Link to="/bmi-calc" className="font-black italic">LAUNCH ANALYZER</Link>
+                        </Button>
                     </Card>
 
-                    <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <CardHeader>
-                            <CardTitle className="flex items-center text-2xl font-bold text-gray-800">
-                                <LuDollarSign className="w-6 h-6 mr-2 text-green-500" />
-                                Income Calculator
-                            </CardTitle>
-                            <CardDescription>Manage your finances effectively</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <p className="text-gray-600 mb-4">
-                                Track your income, expenses, and savings with our comprehensive calculator. Visualize your financial health and receive tailored advice.
-                            </p>
-                            <Button asChild className="w-full bg-green-500 hover:bg-green-600 text-white">
-                                <Link to="/income-calc">Analyze Income</Link>
-                            </Button>
-                        </CardContent>
+                    <Card className="bg-green-300 border-4 border-black shadow-light p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="bg-white border-2 border-black p-2 rounded-base">
+                                <LuDollarSign className="w-8 h-8 text-green-600" />
+                            </div>
+                            <h2 className="text-3xl font-black uppercase italic">Finance</h2>
+                        </div>
+                        <p className="font-bold mb-6 min-h-[60px]">
+                            Complex budgeting, investment compounding, and debt strategies.
+                        </p>
+                        <Button asChild className="w-full bg-white text-black border-2 border-black shadow-light hover:bg-green-50">
+                            <Link to="/income-calc" className="font-black italic">GOTO DASHBOARD</Link>
+                        </Button>
                     </Card>
 
-                    <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <CardHeader>
-                            <CardTitle className="flex items-center text-2xl font-bold text-gray-800">
-                                <LuHelpCircle className="w-6 h-6 mr-2 text-purple-500" />
-                                Basic Calculator
-                            </CardTitle>
-                            <CardDescription>Perform simple calculations quickly</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <p className="text-gray-600 mb-4">
-                                Easily perform basic calculations such as addition, subtraction, multiplication, and division. This tool is perfect for quick and everyday math tasks.
-                            </p>
-                            <Button asChild className="w-full bg-purple-500 hover:bg-purple-600 text-white">
-                                <Link to="/basic-calc">Calculate</Link>
-                            </Button>
-                        </CardContent>
+                    <Card className="bg-main border-4 border-black shadow-light p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="bg-white border-2 border-black p-2 rounded-base">
+                                <LuCalculator className="w-8 h-8 text-purple-600" />
+                            </div>
+                            <h2 className="text-3xl font-black uppercase italic">Numeric</h2>
+                        </div>
+                        <p className="font-bold mb-6 min-h-[60px]">
+                            Scientific calculator with history and advanced trig functions.
+                        </p>
+                        <Button asChild className="w-full bg-white text-black border-2 border-black shadow-light hover:bg-purple-50">
+                            <Link to="/basic-calc" className="font-black italic">OPEN SCI-CALC</Link>
+                        </Button>
+                    </Card>
+
+                    <Card className="bg-orange-300 border-4 border-black shadow-light p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="bg-white border-2 border-black p-2 rounded-base">
+                                <LuBanknote className="w-8 h-8 text-orange-600" />
+                            </div>
+                            <h2 className="text-3xl font-black uppercase italic">Lending</h2>
+                        </div>
+                        <p className="font-bold mb-6 min-h-[60px]">
+                            Amortization schedules and mortgage repayment breakdowns.
+                        </p>
+                        <Button asChild className="w-full bg-white text-black border-2 border-black shadow-light hover:bg-orange-50">
+                            <Link to="/loan-calc" className="font-black italic">LOAN MASTER</Link>
+                        </Button>
+                    </Card>
+
+                    <Card className="bg-yellow-300 border-4 border-black shadow-light p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all md:col-span-2 lg:col-span-1">
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="bg-white border-2 border-black p-2 rounded-base">
+                                <LuArrowLeftRight className="w-8 h-8 text-yellow-600" />
+                            </div>
+                            <h2 className="text-3xl font-black uppercase italic">Universal</h2>
+                        </div>
+                        <p className="font-bold mb-6 min-h-[60px]">
+                            Convert length, weight, data, and temperature with high precision.
+                        </p>
+                        <Button asChild className="w-full bg-white text-black border-2 border-black shadow-light hover:bg-yellow-50">
+                            <Link to="/unit-calc" className="font-black italic">UNIT ENGINE</Link>
+                        </Button>
                     </Card>
                 </div>
-                <section className="mt-16 text-center  py-16 rounded-lg">
-                    <div className="container mx-auto px-4">
-                        <h3 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
-                            Why Choose Our Calculator Tools?
-                        </h3>
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
-                            Our advanced calculation tools are designed to provide precision, ease of use, and valuable insights for your daily needs.
-                        </p>
-                        <div className="grid md:grid-cols-3 gap-8">
-                            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                                <div className="mb-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                                    </svg>
+
+                <section className="border-t-8 border-black pt-20 pb-10">
+                    <div className="grid md:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-6">
+                            <h3 className="text-5xl font-black uppercase italic">Engineering Grade</h3>
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-4 bg-red-200 border-4 border-black p-4 shadow-light">
+                                    <LuTarget className="w-10 h-10 shrink-0" />
+                                    <div>
+                                        <h4 className="font-black text-xl uppercase">Zero Placeholders</h4>
+                                        <p className="font-bold opacity-70">Functional tools for real-world scenarios. No fake data here.</p>
+                                    </div>
                                 </div>
-                                <h4 className="text-2xl font-bold text-gray-800 mb-4">Precision Guaranteed</h4>
-                                <p className="text-gray-600">
-                                    Utilizing cutting-edge algorithms and the latest scientific formulas to ensure the most accurate calculations possible.
-                                </p>
+                                <div className="flex items-center gap-4 bg-cyan-200 border-4 border-black p-4 shadow-light">
+                                    <LuBrain className="w-10 h-10 shrink-0" />
+                                    <div>
+                                        <h4 className="font-black text-xl uppercase">Native Storage</h4>
+                                        <p className="font-bold opacity-70">Your history and settings live in your browser's core.</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-4 bg-green-200 border-4 border-black p-4 shadow-light">
+                                    <LuTrendingUp className="w-10 h-10 shrink-0" />
+                                    <div>
+                                        <h4 className="font-black text-xl uppercase">Visual Edge</h4>
+                                        <p className="font-bold opacity-70">Data visualization that actually makes sense at a glance.</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                                <div className="mb-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                                    </svg>
-                                </div>
-                                <h4 className="text-2xl font-bold text-gray-800 mb-4">Seamless Experience</h4>
-                                <p className="text-gray-600">
-                                    Intuitive, clean interface designed for users of all technical backgrounds, making complex calculations simple.
-                                </p>
-                            </div>
-                            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                                <div className="mb-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                                    </svg>
-                                </div>
-                                <h4 className="text-2xl font-bold text-gray-800 mb-4">Smart Insights</h4>
-                                <p className="text-gray-600">
-                                    Beyond calculations, receive intelligent recommendations tailored to your specific data and needs.
-                                </p>
+                        </div>
+                        <div className="relative">
+                            <div className="bg-white border-8 border-black p-8 shadow-[20px_20px_0px_0px_rgba(0,0,0,1)] rotate-3">
+                                <div className="bg-black text-white p-2 inline-block font-black uppercase text-[10px] mb-4">SYSTEM STATUS: OPTIMAL</div>
+                                <p className="text-4xl font-black italic mb-4">"THE ONLY SUITE YOU NEED FOR SURVIVAL IN THE MODERN WORLD."</p>
+                                <p className="font-bold text-right text-main">- MOCHRKS ARCHIVE</p>
                             </div>
                         </div>
                     </div>
                 </section>
             </main>
-
-
         </div>
     )
 }

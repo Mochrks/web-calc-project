@@ -6,6 +6,9 @@ import { Income } from '@/pages/Income';
 import { BMI } from '@/pages/BMI';
 import { Faq } from '@/pages/Faq';
 
+import { Loan } from '@/pages/Loan';
+import { Unit } from '@/pages/Unit';
+
 const AppRoutes: React.FC = () => {
     return (
         <Routes>
@@ -13,6 +16,8 @@ const AppRoutes: React.FC = () => {
             <Route path="/basic-calc" element={<Basic />} />
             <Route path="/bmi-calc" element={<BMI />} />
             <Route path="/income-calc" element={<Income />} />
+            <Route path="/loan-calc" element={<Loan />} />
+            <Route path="/unit-calc" element={<Unit />} />
             <Route path="/faq" element={<Faq />} />
         </Routes>
     );

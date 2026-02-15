@@ -31,6 +31,12 @@ export const Navbar = () => {
                     <Link to="/income-calc" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">
                         Income Calculator
                     </Link>
+                    <Link to="/loan-calc" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">
+                        Lending
+                    </Link>
+                    <Link to="/unit-calc" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">
+                        Universal
+                    </Link>
                     <Link to="/faq" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">
                         FAQ
                     </Link>
@@ -84,6 +90,20 @@ export const Navbar = () => {
                         onClick={toggleSidebar}
                     >
                         Income Calculator
+                    </Link>
+                    <Link
+                        to="/loan-calc"
+                        className="text-gray-600 hover:text-gray-900"
+                        onClick={toggleSidebar}
+                    >
+                        Lending
+                    </Link>
+                    <Link
+                        to="/unit-calc"
+                        className="text-gray-600 hover:text-gray-900"
+                        onClick={toggleSidebar}
+                    >
+                        Universal
                     </Link>
                     <Link
                         to="/faq"
