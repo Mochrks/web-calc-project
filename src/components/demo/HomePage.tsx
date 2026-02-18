@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 export const HomePage = () => {
     return (
         <div className="min-h-screen py-10 bg-bg text-text">
-            <main className="container mx-auto px-4">
+            <main className="container mx-auto px-4 pt-10">
                 <section className="text-center mb-20 relative">
                     <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-yellow-300 border-2 border-black px-4 py-1 font-black uppercase text-xs rotate-2 shadow-light">
                         V3.0 Extreme Dashboards
