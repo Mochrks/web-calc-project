@@ -7,20 +7,20 @@ import { LuHelpCircle } from "react-icons/lu"
 export const FAQPage = () => {
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center py-16 px-4">
+        <div className="min-h-screen bg-bg flex items-center justify-center py-16 px-4">
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 className="w-full max-w-4xl"
             >
-                <div className="bg-white shadow-2xl rounded-2xl overflow-hidden">
-                    <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-8 text-center">
+                <div className="bg-white shadow-light border-4 border-black rounded-base overflow-hidden">
+                    <div className="bg-main text-text border-b-4 border-black p-8 text-center">
                         <div className="flex items-center justify-center mb-4">
                             <LuHelpCircle className="w-12 h-12 mr-4" />
                             <h1 className="text-3xl font-extrabold">Frequently Asked Questions</h1>
                         </div>
-                        <p className="text-xl text-white/80 max-w-2xl mx-auto">
+                        <p className="text-xl text-black/80 max-w-2xl mx-auto">
                             Get quick answers to common questions about our calculators and tools
                         </p>
                     </div>
@@ -43,9 +43,9 @@ export const FAQPage = () => {
                                 >
                                     <AccordionItem
                                         value={`item-${index}`}
-                                        className="border border-gray-200 rounded-lg"
+                                        className="border-2 border-black rounded-base bg-white"
                                     >
-                                        <AccordionTrigger className="px-4 py-3 hover:bg-gray-50 transition-colors">
+                                        <AccordionTrigger className="px-4 py-3 hover:bg-main hover:text-text transition-colors border-b-2 border-transparent data-[state=open]:border-black">
                                             <div className="flex items-center justify-between w-full">
                                                 <span className="text-lg font-semibold text-gray-800 text-left">
                                                     {faq.question}
@@ -53,7 +53,7 @@ export const FAQPage = () => {
 
                                             </div>
                                         </AccordionTrigger>
-                                        <AccordionContent className="px-4 py-3 bg-gray-50 text-gray-600">
+                                        <AccordionContent className="px-4 py-3 bg-bg text-text font-medium border-t-2 border-black">
                                             {faq.answer}
                                         </AccordionContent>
                                     </AccordionItem>
@@ -62,8 +62,8 @@ export const FAQPage = () => {
                         </Accordion>
                     </div>
 
-                    <div className="bg-gray-100 p-6 text-center">
-                        <p className="text-gray-600">
+                    <div className="bg-white border-t-4 border-black p-6 text-center">
+                        <p className="text-text font-bold">
                             Didn't find the answer you were looking for?{' '}
                             <a
                                 href="https://github.com/mochrks"

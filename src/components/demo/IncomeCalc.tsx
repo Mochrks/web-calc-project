@@ -23,6 +23,23 @@ const parseIDR = (value: string) => {
     return Number(value.replace(/[^0-9-]+/g, ""));
 }
 
+type TabId = 'budget' | 'invest' | 'debt' | 'history';
+
+const TabButton = ({ id, icon: Icon, label, activeTab, onClick }: { id: TabId, icon: React.ElementType, label: string, activeTab: string, onClick: (id: TabId) => void }) => (
+    <button
+        onClick={() => onClick(id)}
+        className={cn(
+            "flex items-center gap-2 px-4 py-2 border-2 border-black rounded-base transition-all font-heading",
+            activeTab === id
+                ? "bg-main translate-x-boxShadowX translate-y-boxShadowY shadow-none"
+                : "bg-white shadow-light hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none"
+        )}
+    >
+        <Icon className="w-4 h-4" />
+        <span className="hidden sm:inline">{label}</span>
+    </button>
+)
+
 export const IncomeCalc = () => {
     const [activeTab, setActiveTab] = useState<'budget' | 'invest' | 'debt' | 'history'>('budget')
     const [date, setDate] = useState(format(new Date(), 'yyyy-MM-dd'))
@@ -139,26 +156,11 @@ export const IncomeCalc = () => {
         { name: 'Savings', value: Math.max(0, calculateSavings()), color: '#0088FE' },
     ].filter(d => d.value > 0)
 
-    const historyChartData = entries.slice(0, 7).reverse().map(e => ({
+    const historyChartData = React.useMemo(() => entries.slice(0, 7).reverse().map(e => ({
         date: format(new Date(e.date), 'MM/dd'),
         income: e.income,
         savings: e.savings
-    }))
-
-    const TabButton = ({ id, icon: Icon, label }: { id: typeof activeTab, icon: React.ElementType, label: string }) => (
-        <button
-            onClick={() => setActiveTab(id)}
-            className={cn(
-                "flex items-center gap-2 px-4 py-2 border-2 border-black rounded-base transition-all font-heading",
-                activeTab === id
-                    ? "bg-main translate-x-boxShadowX translate-y-boxShadowY shadow-none"
-                    : "bg-white shadow-light hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none"
-            )}
-        >
-            <Icon className="w-4 h-4" />
-            <span className="hidden sm:inline">{label}</span>
-        </button>
-    )
+    })), [entries])
 
     return (
         <div className="container relative min-h-screen py-10">
@@ -233,10 +235,10 @@ export const IncomeCalc = () => {
                 {/* Right Area - Input Tabs */}
                 <div className="lg:col-span-8 space-y-6">
                     <div className="flex flex-wrap gap-4 mb-4">
-                        <TabButton id="budget" icon={LuWallet} label="Budgeting" />
-                        <TabButton id="invest" icon={LuTrendingUp} label="Investments" />
-                        <TabButton id="debt" icon={LuCalculator} label="Debts" />
-                        <TabButton id="history" icon={LuHistory} label="History" />
+                        <TabButton id="budget" icon={LuWallet} label="Budgeting" activeTab={activeTab} onClick={setActiveTab} />
+                        <TabButton id="invest" icon={LuTrendingUp} label="Investments" activeTab={activeTab} onClick={setActiveTab} />
+                        <TabButton id="debt" icon={LuCalculator} label="Debts" activeTab={activeTab} onClick={setActiveTab} />
+                        <TabButton id="history" icon={LuHistory} label="History" activeTab={activeTab} onClick={setActiveTab} />
                     </div>
 
                     <Card className="bg-white border-black border-4 shadow-light p-6">
